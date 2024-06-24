@@ -1,0 +1,48 @@
+# verify the updated deployment:
+
+kubectl rollout status deployment <deployment-name>
+
+# rollout deployment history:
+
+kubectl rollout history deployment <deployment -name> // Get all revision of deployment
+
+# Rollback the last update of the deployment:
+
+kubectl rollout undo deployment <deployment -name>
+
+# Undo deployment with specified revision
+
+kubectl rollout undo deployment <deployment -name> --to-revision=1
+kubectl rollout undo deployment <deployment_name> --to-revision <revision_number>
+
+# rollout pause deployment:
+
+kubectl rollout pause deployment <deployment -name>
+
+# rollout reume deployment:
+
+kubectl rollout resume deployment <deployment -name>
+
+# rollout delete deployment: // deletes deployment and related dependencies
+
+kubectl delete -f <deployment-yaml-file>
+
+# rollout delete all deployments: // deletes pods, replicasets, deployments and services in current namespace
+
+kubectl delete all --all
+
+# rollout delete deployment by its name:
+
+kubectl delete deployment <deployment-name>
+
+# rollout history specific revision number in deployment:
+
+kubectl rollout history deployment <deployment_name> --revision=<revision_number>
+
+# restart rollout deployment:
+
+kubectl rollout restart deployment <deployment_name>
+
+
+
+

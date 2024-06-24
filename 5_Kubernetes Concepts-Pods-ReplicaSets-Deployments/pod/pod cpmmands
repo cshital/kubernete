@@ -1,0 +1,93 @@
+# describe pods: // display all information of pods
+
+kubectl describe pod <pod-name> // specific pod
+
+kubectl describe pod <pod-name> --all // all pods
+
+kubectl describe pod newpods-list // new create pod list only
+
+
+# check status pod: runing or not:
+
+kubectl get pods // verify the creation of the pod
+
+kubectl get pods -o wide // dispaly all pods with status details
+
+kubectl get pods <pod-name> // use for specific pod
+
+kubectl get pods <pod-name> -o yaml 
+
+kubectl get pods <pod-name> -w // get pods with watch
+
+
+# expose port , create port:
+
+kubectl run <pod-name> --image <image-name> --port <port> --expose 
+
+
+# execute a command in a container of a pod:
+
+kubectl exec mypod --[command]
+
+kubectl exec -it pod <pod-name> /bin/bash
+
+# edit pod:
+
+kubectl edit pod <pod-name>
+
+# logs pod:
+
+kubectl logs pod <pod-name> // log pod
+
+kubectl logs pod -f <pod-name> // tail -f pod
+
+
+# creating pod: imperative way 
+
+kubectl run <pod-name> --image <image-name> --port <port> 
+
+kubectl run <pod-name> --image <image-name> --port <port> --expose // // also expose port 80 of container
+
+kubectl run test --image nginx --port 80 
+
+kubectl run test --image nginx
+
+
+# create pod declarative yaml:
+
+kubectl run <pod-name> --image <image-name> --dry-run=client -o yaml filename.yaml //show the output in yaml shortcut to create a declarative yaml from imperative commands
+
+kubectl run <pod-name> --image <image-name> --dry-run=client 
+
+kubectl run nginx --image nginx --dry-run=client 
+
+
+# Delete pod:
+
+kubectl delete pod <pod-name>
+
+kubectl delete pod 
+
+# create from url:
+
+kubectl apply -f https://<url>
+
+
+# create all file in directory :
+
+kubectl apply -f ./<directory-name>
+
+# create multiple file:
+
+kubectl apply -f filename1.yaml -f filename2.yaml 
+
+# create pod declarative way using yaml file:
+
+kubectl apply -f filename.yaml
+
+kubectl create -f filename.yaml
+
+// if manifest file is changed/updated after deployment need to deploy the pod again
+
+
+

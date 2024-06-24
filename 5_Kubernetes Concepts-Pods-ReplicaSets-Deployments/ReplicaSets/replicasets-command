@@ -1,0 +1,53 @@
+# create replicaset:
+
+kubectl create -f filename.yaml
+
+# check replicaset create:
+
+kubectl get replicaset
+
+# edit replicaset:
+
+kubectl edit replicaset <replicaset-name> // edit a replicaset; like image, replicas
+
+# delete replicaset:
+
+kubectl delete -f replica-set.yml
+
+# get all service resource:
+
+kubectl get all // get pods, replicasets, deployments, services all in one shot
+
+# replace replicaset:
+
+kubectl replace -f filename.yaml // replaces the pods with updated definition file
+
+# relicaset scale using definition file :
+
+kubectl scale --replicas=6 -f filename.yaml
+
+kubectl scale --replicas=6 -f <replicatset-name>
+
+
+# replicaset using name of replicaset :
+
+kubectl scale --replicas=6 replicaset <replicaset-name>
+
+# delete replicasets:
+
+kubectl delete pod  replicaset-defination.yaml 
+
+# describe replicasets: // see all information about replicaset
+
+kubectl describe replicaset filename.yaml 
+
+# explain replicaset: // give suggestion for error file
+
+kubectl explain replicaset
+
+
+
+
+
+
+

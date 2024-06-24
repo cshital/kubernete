@@ -1,0 +1,53 @@
+section-2 kubernates Overview:
+
+1) What is a worker machine in Kubernetes known as?
+
+- Node or Minion
+
+2) A Node in Kubernetes can only be a physical machine and can never be a virtual   
+   machine.
+
+- False
+
+3) Multiple Nodes together form a
+
+- Cluster
+
+4) Which of the following processes runs on Kubernetes Master Node
+
+- kube-apiserver
+
+5) Which of the following is a distributed reliable key-value store used by kubernetes   to store all data used to manage the cluster
+
+- etcd
+
+6) Which of the following services is responsible for distributing work or containers across multiple nodes.  
+
+- scheduler
+
+7) Which of the following is the underlying framework that is responsible for running application in containers like Docker?
+
+- container runtime
+
+8) Which is the command line utility used to manage a kubernetes cluster?
+
+- kubectl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

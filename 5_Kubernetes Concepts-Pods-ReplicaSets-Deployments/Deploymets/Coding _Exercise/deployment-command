@@ -1,0 +1,80 @@
+# create deployment :
+
+kubectl create -f filename.yaml
+
+# check new create deployment:
+
+kubectl get deployments
+
+# check new create replicaset on deployment:
+
+kubectl get replicaset
+
+# check new create pod on deployment:
+
+kubectl get pods
+
+# check all object created:
+
+kubectl get all
+
+# deletes deployment and related dependencies:
+
+kubectl delete -f <deployment-yaml-file> 
+
+# deletes pods, replicasets, deployments and services in current namespace:
+
+kubectl delete all --all
+
+# check deployment pods all details:
+
+kubectl get pods –o wide
+
+# perform live edit of deployment:
+
+kubectl edit deployment <deployment -name>
+
+# scale up deployment:
+
+kubectl scale deployment <deployment -name> --replicas2
+
+# redeploy a modified yaml file; Ex:replicas changed to 5, image to nginx:1.18 :
+
+kubectl apply –f deployment.yml
+
+# describe deployment: 
+
+kubectl describe deployment <deployment-name>
+
+# check all deployments deatils:
+
+kubectl get deployments
+
+kubectl get deployment <deployment_name> // specific deployment
+
+# get deployment in yaml: 
+
+kubectl get deployment <deployment_name> -o yaml
+
+# Get deployment wide information:
+
+kubectl get deployment <deployment_name> -o wide
+
+# create deployment:
+
+kubectl create -f deployment.yml --record // (--record is optional, it just records the events in the deployment)
+
+# create deployment dry-run:
+
+kubectl create deployment nginx --image nginx --dry-run -o yaml
+
+# check Log deployment:
+
+kubectl logs deployment/deployment_name -f
+
+# Update image in deployment:
+
+kubectl set image deployment <deployment_name>
+<container_name>=<new_image_name>
+
+kubectl set image deployment frontend simple-webapp=kodekloud/webapp-color:v2

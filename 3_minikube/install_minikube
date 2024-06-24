@@ -1,0 +1,158 @@
+Link : // https://www.linuxtechi.com/how-to-install-minikube-on-ubuntu/
+
+Install kubectl on Linux
+
+Install kubectl binary with curl on Linux 
+
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+2. Make the kubectl binary executable.
+
+chmod +x ./kubectl
+
+3. Move the binary in to your path.
+
+sudo mv .kubectl /usr/local/bin/kubectl
+
+4. check version kubectl :
+    kubectl version
+
+    Client Version: v1.30.1
+    Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
+    Server Version: v1.30.0
+    
+ 5. test ensure version you installed is up-to-date:   
+    kubectl version --client
+
+    Client Version: v1.30.1
+    Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
+    
+6. check virtualization is supported on linux // is output non-empty then vmx is supported.
+
+   grep -E --color 'vmx|svm' /proc/cpuinfo
+
+
+7. install minikube:
+
+ curl -Lo minikube https://storage.googleapis.com/minikube/release/latest/minikube-linux-amd64 \
+>  && chmod +x minikube
+
+8. add minikube executable path:
+
+sudo mkdir -p /usr/local/bin/
+
+- if already exist : then check :
+
+ls -ld /usr/local/bin/
+drwxr-xr-x 3 root root 4096 Jun  6 18:28 /usr/local/bin/
+
+
+9. install minikube specific path:
+
+sudo install minikube /usr/local/bin/
+
+10. confirm installation hypervisor and minikube:
+
+ minikube start
+
+
+11. check minikube version :
+
+ minikube version
+
+minikube version: v1.33.1
+commit: 5883c09216182566a63dff4c326a6fc9ed2982ff
+
+12. check minikube status :
+
+minikube status
+
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+13. check cluster information :
+kubectl cluster-info
+
+Kubernetes control plane is running at https://192.168.49.2:8443
+CoreDNS is running at https://192.168.49.2:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+
+14. check pods nodes:
+kubectl get nodes
+
+NAME       STATUS   ROLES           AGE   VERSION
+minikube   Ready    control-plane   84m   v1.30.0
+
+15.minikube dashboard:
+minikube dashboard
+
+16. create pods:
+kubectl run nginx --image=nginx
+
+pod/nginx created
+
+17. check pods or nodes:
+kubectl get pod
+
+NAME    READY   STATUS              RESTARTS   AGE
+nginx   0/1     ContainerCreating   0          8s
+
+18. Describe Nodes:   
+kubectl describe node
+
+provides detailed information about the nodes in your Kubernetes cluster.
+
+19. Describe all Nodes:
+kubectl describe node <node-name>
+kubectl describe node minikube
+
+detailed description of all nodes. If you want to describe a specific node, use the node name:
+
+20. deploy nginx based deployment :
+Run below kubectl command to install nginx based deployment.
+
+kubectl create deployment my-app --image=nginx
+
+21. verify depoyment status:
+kubectl get deployments.app my-app
+kubectl get pods
+kubectl get deployments
+
+22. start minikube run :
+minikube start
+
+23. stop minkube:
+minikube stop
+
+24. delete minikube:
+minikube delete
+
+25. Expose the deployment using following command:
+kubectl expose deployment my-app --name=my-app-svc --type=NodePort --port=80
+
+26. get your service url:
+minikube service my-app-svc --url
+minikube service servicename --url
+
+27. delete service deployment:
+kubectl delete service servicename
+kubectl delete service my-app-svc
+
+28. delete deployment:
+kubectl delete deployment servicename
+kubectl delete deployment my-app-svc
+
+
+29. delete all minikube cluster:
+minikube delete --all
+
+30 Monitor Kubernetes Events:
+kubectl get events
+
+

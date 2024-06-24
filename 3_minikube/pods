@@ -1,0 +1,17 @@
+1. create pods : // use kubectl utility 
+kubectl run nginx --image=nginx    //use docker image // if you want to add specific tags to image.
+
+pod/nginx created 
+
+2. if you want to see long details :
+kubectl describe pod nginx   // pod name 
+
+3. if you want to see ip,node details:
+kubectl get pods -o wide
+
+4. create pod command:
+kubectl run
+
+5. create deployment :
+kubectl create deployment nginx --image=nginx
+

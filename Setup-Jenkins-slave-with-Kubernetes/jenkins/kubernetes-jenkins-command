@@ -1,0 +1,116 @@
+Link: // https://dev.to/tungbq/jenkins-on-kubernetes-a-comprehensive-guide-5d6a
+
+kubectl create namespace jenkins
+ 
+//namespace/jenkins created
+
+kubectl apply -f svc.yml 
+
+// service/jenkins created
+
+kubectl apply -f pv.yml 
+
+// persistentvolume/jenkins-pv created
+   persistentvolumeclaim/jenkins-pvc created
+
+kubectl apply -f deployment.yml 
+
+//deployment.apps/jenkins created
+
+ minikube service
+ minikube service --all
+
+ kubectl get service
+ kubectl get all
+
+ curl -I 10.110.86.97 
+
+ kubectl get node
+ kubectl get pods
+
+ minikube ip 
+
+kubectl port-forward service/jenkins-service -n devops-tools 8087:8080
+
+
+ kubectl get pods --namespace=devops-tools
+
+ kubectl logs jenkins-68c8b7f55-r27hw -n devops-tools
+
+minikube start
+
+kubectl get pods --namespace=devops-tools
+
+kubectl get pods -n devops-tools
+
+kubectl describe pod jenkins-68c8b7f55-gmblf -n devops-tools
+
+kubectl get service 
+
+kubectl get service devops-tools
+
+kubectl get service namespace devops-tools
+
+kubectl get all -n devops-tools
+
+kubectl get pv -n devops-tools
+
+kubectl get pvc -n devops-tools
+
+kubectl delete all --all -n devops-tools
+
+kubectl delete all -n devops-tools
+
+kubectl get all --all -n devops-tools
+
+kubectl get pvc -n devops-tools
+
+kubectl get pv -n devops-tools
+
+kubectl delete pvc jenkins-pv-claim -n devops-tools
+
+kubectl delete pv jenkins-pv-volume
+
+kubectl get pv
+
+kubectl get pvc
+
+./cleanup.sh 
+
+kubectl delete namespace devops-tools
+
+kubectl get ns
+
+
+
+kubectl apply -f pv.yml 
+kubectl apply -f deployment.yml 
+kubectl apply -f svc.yml 
+
+kubectl get all -n jenkins
+
+kubectl get pv
+kubectl get pvc
+kubectl get pvc -n jenkins
+
+kubectl describe pod jenkins-6547c655d4-vbm4v -n jenkins
+kubectl logs -f jenkins-6547c655d4-vbm4v -n jenkins
+
+kubectl delete all --all -n jenkins
+kubectl delete pvc jenkins-pvc -n jenkins
+
+kubectl get pv
+minikube delete
+
+kubectl get pods --namespace=jenkins
+
+kubectl get pvc -n jenkins
+
+kubectl exec -it <pod_name> cat /var/jenkins_home/secrets/initialAdminPassword -n jenkins
+
+kubectl get pods -n jenkins -w
+
+cd hands-on/jenkins-on-k8s
+./cleanup.sh
+
+ kubectl get svc -n jenkins

@@ -1,0 +1,8 @@
+# create replicationcontroller :
+
+kubectl create -f filename.yml
+
+# check how many replicationctroller create:
+
+kubectl get replicationcontroller
+

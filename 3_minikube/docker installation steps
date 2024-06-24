@@ -1,0 +1,121 @@
+Link: // https://www.linuxtechi.com/install-docker-on-ubuntu-24-04/
+
+docker installation steps:
+
+
+Step 1: Update Your System
+First, update your package index and install necessary dependencies:
+
+sudo apt-get update
+sudo apt-get upgrade 
+
+Step 2: Install Docker :
+
+Kubernetes uses Docker as the default container runtime.
+
+
+sudo apt-get install -y docker.io
+
+# error :
+
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies:
+ docker.io : Depends: containerd (>= 1.2.6-0ubuntu1~)
+E: Unable to correct problems, you have held broken packages.
+
+
+Step 1: Uninstall Old Versions
+
+Remove any old Docker versions if installed:
+
+sudo apt-get remove docker docker-engine docker.io containerd runc
+
+
+Step 2: Set Up the Repository
+
+Update the package index:
+
+sudo apt-get update
+
+
+Install required packages:
+
+sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+
+
+Add Docker’s official GPG key:
+
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+
+Set up the stable repository:
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+
+Step 3: Install Docker Engine
+
+Update the package index again:
+
+sudo apt-get update
+
+Install the latest version of Docker Engine and containerd:
+
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+Verify Docker installation:
+
+sudo docker run hello-world
+
+
+Handling "Held Broken Packages" Issue
+
+If the problem persists, you can try to fix broken packages:
+
+Attempt to fix broken packages:
+
+sudo apt --fix-broken install
+
+Clean up:
+
+sudo apt-get clean
+sudo apt-get autoremove
+
+Install Docker Using Convenience Script (Alternative Method)
+
+Docker provides a convenience script to install Docker quickly. While it's not recommended for production use, it can be useful for testing environments.
+
+Download and run the script:
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+
+
+Add your user to the Docker group (optional):
+
+sudo usermod -aG docker $USER
+
+
+Log out and log back in so that the group membership is re-evaluated.
+
+Verify Docker Installation
+
+To verify Docker is correctly installed and running:
+
+sudo docker --version
+
+
+
+
+
+
+

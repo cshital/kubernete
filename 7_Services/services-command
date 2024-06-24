@@ -1,0 +1,76 @@
+# describe services : 
+
+kubectl describe  svc
+kubectl describe services
+kubectl describe service
+kubectl describe service <service-name>
+kubectl describe service <service>
+
+# Create service:
+
+kubectl create -f service-definition-1.yaml // in yaml file 
+
+kubectl create service <service-type><service_name> --tcp=<port:target_port>
+
+# Create service yaml file:
+
+kubectl create service <service-type><service_name> --tcp=<port:target_port> --dry-run=client -o yaml > <file_name>.yaml
+
+kubectl create –f nodeportservice.yml // <file-name.yaml>
+
+# yaml file to create the service:
+
+kubectl apply -f <service-file-name.yaml>
+
+# Expose service from pod/deployment:
+
+kubectl expose deployment <pod/deployment_name> --type=<service-type> --port <port> --target-port<target_port>
+
+
+# alternatively create a service of type ClusterIP (default) to expose the Deployment:
+
+kubectl expose deployment <deployment-name> --port=80 --type=ClusterIP
+
+# verify the created all service:
+
+kubectl get service <service>
+kubectl get svc 
+kubectl get service 
+
+kubectl get service <service> -o yaml // Get service in yaml
+
+kubectl get service <service> -o wide // Get service wide information
+
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.43.0.1    <none>        443/TCP   14m
+
+# check name space : check all namespace
+
+kubectl get namespace
+kubectl get ns
+
+NAME              STATUS   AGE
+kube-system       Active   12m
+kube-public       Active   12m
+kube-node-lease   Active   12m
+default           Active   12m
+
+# serice endpoints: 
+
+kubectl get endpoints <endpoints_name>
+kubectl get endpoints kubernetes 
+kubectl get endpoints <serice-name>
+
+# Edit service:
+
+kubectl edit service <service>
+kubectl edit svc <service>
+kubectl edit service <service-name>
+
+# Delete service:
+
+kubectl delete service <service>
+kubectl delete svc <service>
+kubectl delete service <service-name>
+
+

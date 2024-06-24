@@ -1,0 +1,27 @@
+# without labels create pods: auto assign labes app:<object-name>
+
+kubectl run --image nginx nginx 
+
+# check labels:
+
+kubectl get pods --show-labels
+
+# Adding Labels:
+
+kubectl label pod nginx environment=dev  //  environment=dev --- its label name 
+
+# show all labels: node/pod/deployment:
+
+kubectl get <node/pod/deployment> --show-labels // Show labels of node,pod and deployment
+
+# attach all labels pod/node/deployment:
+
+kubectl label <node/pod/deployment> <pod_name> <key>=<value>
+
+# remove all labels pod/node/deployment:
+
+kubectl label <node/pod/deployment> <pod_name> <key>=<value>
+
+# Select node,pod and deployment by using labels:
+
+kubectl get <node/pod/deployment> -l <key>=<value> 
